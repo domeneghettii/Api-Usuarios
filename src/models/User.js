@@ -1,7 +1,7 @@
 const { v4: uuid4 } = require('uuid');
 
 class User {
-    constructor(name,  email, age) {
+    constructor(name, email, age) {
         this.id = Date.now().toString();
         this.name = name;
         this.email = email;

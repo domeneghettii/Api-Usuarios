@@ -23,8 +23,7 @@ class UserList {
             return user;
         }
 
-        deleteUser(id) {
-            
+        deleteUser(id) { 
         this.users = this.users.filter(user => user.id != id);
         }
     }
