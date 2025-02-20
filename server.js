@@ -10,7 +10,8 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 4057
+;
 app.listen(PORT, () => {
     console.log(`💕😜 Servidor rodando em http://localhost:${PORT}`);
 });
