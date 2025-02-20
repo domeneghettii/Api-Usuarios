@@ -1,9 +1,11 @@
 const express = require("express");
 const router = express.Router();
-const filmeController = require("../controllers/usersControllers");
+const usersController = require("../controllers/usersController");
 
-router.get("/users", userController.getAllusers);
-router.post("/users", userController.adduser);
-router.put("/users/:id", userController.updateuser);
-router.delete("/users/:id", userController.deleteuser);
-router.get("/users/:id", userController.getuserById);
+router.get("/users", userController.getAllUsers);
+router.post("/users", userController.addUser);
+router.get("/users/:id", userController.getUserById);
+router.put("/users/:id", userController.updateUser);
+router.delete("/users/:id", userController.deleteUser);
+
+module.exports = router;
