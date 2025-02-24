@@ -3,9 +3,10 @@ const UserList = require("../models/UserList");
 
 const lista = new UserList();
 
-lista.addUser(new User("João Silva", "joao@example.com", 30));
-lista.addUser(new User("Maria Souza", "maria@example.com", 25));
+const user1= new User(1, "João Silva", "joao@example.com", 30)
+lista.addUser(user1);
 
+lista.addUser( new User(2, "Maria Souza", "maria@example.com", 25));
 
 const router = {
     getAllUsers: (req, res) => {
