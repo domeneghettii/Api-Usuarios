@@ -1,49 +1,62 @@
 const User = require("../models/User");
 const UserList = require("../models/UserList");
+
 const lista = new UserList();
 
 lista.addUser(new User("João Silva", "joao@example.com", 30));
 lista.addUser(new User("Maria Souza", "maria@example.com", 25));
 
+
 const router = {
     getAllUsers: (req, res) => {
-        res.json(lista.getAllUsers());
+        try {
+            const users = lista.getAllUsers();
+            res.status(200).json(users);
+        } catch (error) {
+            res.status(404).json({message: "Erro ao buscar usuário :(", error});
+        }
     },
 
     getUserById: (req, res) => {
         try {
-            res.json(lista.getUserById(req.params.id));
+            const user = lista.getUserById(req.params.id);
+            res.status(200).json(user);
         } catch (error) {
-            res.status(404).json({ message: "Usuário não encontrado", error });
+            res.status(404).json({message: "usuários não encontrado :(", error});
         }
     },
 
     addUser: (req, res) => {
         try {
-            const { name, email, age } = req.body;
+            const { name, email, age} = req.body;
             if (!name || !email || age === undefined) {
-                throw new Error("Todos os campos são obrigatórios");
+                throw new Error("preencha todos os campos!!!");
             }
             const newUser = new User(name, email, age);
             lista.addUser(newUser);
-            res.status(201).json(newUser);
+            res.status(200).json({message: "usuário criado com sucesso :)"})
         } catch (error) {
-            res.status(400).json({ message: error.message, error });
+            res.status(400).json({message: "erro ao adicionar usuário :(", error});
         }
     },
 
     updateUser: (req, res) => {
         try {
-            res.json(lista.updateUser(req.params.id, req.body));
+            const updatedUser = lista.updateUser(req.params.id, req.body);
+            res.status(200).json(updatedUser);
         } catch (error) {
-            res.status(404).json({ message: "Erro ao atualizar o usuário", error });
+            res.status(404).json({message: "erro ao atualizar usuário :(", error});
         }
     },
 
     deleteUser: (req, res) => {
-        lista.deleteUser(req.params.id);
-        res.status(200).json({ message: "Usuário deletado com sucesso", IdDeletado: req.params.id });
-    }
+        try {
+            lista.deleteUser(req.params.id);
+            lista.deleteUser(200).json({message: "usuário deletado com sucesso", IdDeletado: req.params.id});
+        } catch (error) {
+            res.status(404).json({message: "Erro ao deletar usuário :(", error});
+        }
+    },
 };
 
 module.exports = router;
