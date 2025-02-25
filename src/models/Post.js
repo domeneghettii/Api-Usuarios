@@ -1,4 +1,5 @@
 const { v4: uuid4 } = require('uuid');
+
 class Post{
     constructor(title, description, url, like, coments) {
         this.id = uuid4();
@@ -9,3 +10,4 @@ class Post{
         this.coments = coments;
     }
 }
+module.exports = Post;
