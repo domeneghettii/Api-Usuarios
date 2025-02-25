@@ -29,11 +29,11 @@ const router = {
 
     addPost: (req, res) => {
         try {
-            const { id, title, description, image} = req.body;
-            if (!id || !title || !description || !image === undefined) {
+            const { id, title, description, image, like, coments} = req.body;
+            if (!id || !title || !description || !image || like, coments === undefined) {
                 throw new Error("preencha todos os campos!!");
             }
-            const newPost = new Post(id, title, description, image);
+            const newPost = new Post(id, title, description, image, like, coments);
             lista.addPost(newPost);
             res.status(200).json({message: "Post criado com sucesso :) "});
         } catch (error) {
