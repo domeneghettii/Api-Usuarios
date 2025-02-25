@@ -12,7 +12,10 @@ Uma API simples para gerenciar usuários, permitindo operações como listar, ad
 🛠️ Tecnologias Utilizadas
 	•	Node.js
 	•	Express
-	•	MongoDB / Mongoose (ou outra tecnologia para banco de dados, se aplicável)
+	•	Dotenv
+	•   Uuid
+	•   Cors
+
 
 📂 Estrutura do Projeto
 
