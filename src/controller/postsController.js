@@ -62,8 +62,10 @@ const router = {
 
     deletePost: (req, res) => {
         try {
-            lista.deletePost(req.params.id);
-            lista.deletePost(200).json({message: "Post deletado com sucesso", IdDeletado: req.params.id});
+            const post = req.params.id;
+            lista.deletePost(post);
+            res.status(200).json({message: "Post deletado com sucesso", post,
+            });
         } catch (error) {
             res.status(404).json({message: "Erro ao deletar post :(", error});
         }
