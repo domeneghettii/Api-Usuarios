@@ -1,8 +1,8 @@
-CREATE DATABASE users;
+CREATE DATABASE usuarios;
 
-\c users;
+\c usuarios;
 
-CREATE TABLE usuarios (
+CREATE TABLE users (
     id SERIAL PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
     email VARCHAR(255) NOT NULL UNIQUE,
@@ -16,7 +16,7 @@ CREATE TABLE post (
     user_id INTEGER REFERENCES usuarios(id) ON DELETE CASCADE
 );
 
-INSERT INTO usuarios (name, email, password) VALUES 
+INSERT INTO user (name, email, password) VALUES 
     ('Anna Beatriz Valetim', 'AnnaV@gmail.com', 'amods'),
     ('Beatriz Lima', 'Bealima@gmail.com', 'amods'),
     ('Luana', 'lulud@gmail.com', 'amods');

@@ -53,7 +53,7 @@ const createUser = async (req, res) => {
     try {
         const { name, email, password } = req.body;      
         const photo = req.file ? req.file.filename : null; // Verifica se a imagem foi enviada
-        const newUser = await UserModel.createUsuarios(name, email, password, photo);
+        const newUser = await UserModel.createUsers(name, email, password, photo);
         res.status(201).json(newUser);
     } catch (error) {
         res.status(500).json({ message: "Erro ao criar o usuário." });
