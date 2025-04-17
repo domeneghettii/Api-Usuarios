@@ -1,5 +1,4 @@
-const PostModel = require('../models/postModel');
-// const PostModel = require('../models/postsModel'); // Ajuste o caminho conforme necessário
+const PostModel = require('../models/PostModel');
 
 const getAllPosts = async (req, res) => {
     try {

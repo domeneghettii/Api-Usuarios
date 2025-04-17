@@ -1,8 +1,9 @@
-const UserModel = require('../models/userModel.js');
+const UserModel = require('../models/UserModel');
 
 const getAllUsers = async (req, res) => {
     try {
-        const users = await UserModel.getUsuarios();
+        const {name} = req.query;
+        const users = await UserModel.getUsuarios(name);
         res.json(users);
     } catch (error) {
         res.status(500).json({ error: 'Erro ao buscar usuários.' });
@@ -50,9 +51,10 @@ const updateUser = async (req, res) => {
 
 const createUser = async (req, res) => {
     try {
-        const { name, email, password } = req.body;
-        const user = await UserModel.createUsuarios(name, email, password);
-        res.status(201).json(user);
+        const { name, email, password } = req.body;      
+        const photo = req.file ? req.file.filename : null; // Verifica se a imagem foi enviada
+        const newUser = await UserModel.createUsuarios(name, email, password, photo);
+        res.status(201).json(newUser);
     } catch (error) {
         res.status(500).json({ message: "Erro ao criar o usuário." });
     }
