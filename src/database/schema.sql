@@ -2,26 +2,34 @@ CREATE DATABASE usuarios;
 
 \c usuarios;
 
+CREATE DATABASE usuarios;
+
+\c usuarios;
+
 CREATE TABLE users (
     id SERIAL PRIMARY KEY,
-    name VARCHAR(255) NOT NULL,
-    email VARCHAR(255) NOT NULL UNIQUE,
-    password VARCHAR(255) NOT NULL
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL UNIQUE,
+    age INTEGER NOT NULL
 );
 
-CREATE TABLE post (
+CREATE TABLE posts (
     id SERIAL PRIMARY KEY,
-    title VARCHAR(255) NOT NULL,
-    content TEXT NOT NULL,
-    user_id INTEGER REFERENCES usuarios(id) ON DELETE CASCADE
+    user_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+    description TEXT NOT NULL,
+    add_person VARCHAR(255),
+    localization VARCHAR(255)
 );
 
 INSERT INTO user (name, email, password) VALUES 
-    ('Anna Beatriz Valetim', 'AnnaV@gmail.com', 'amods'),
-    ('Beatriz Lima', 'Bealima@gmail.com', 'amods'),
-    ('Luana', 'lulud@gmail.com', 'amods');
+    ('Anna Beatriz Valetim', 'AnnaV@gmail.com', 17),
+    ('Beatriz Lima', 'Bealima@gmail.com', 17),
+    ('Luana', 'lulud@gmail.com', 17);
 
-INSERT INTO post (title, content, user_id) VALUES 
-    ('Post 1', 'Conteúdo do post 1', 1),
-    ('Post 2', 'Conteúdo do post 2', 2),
-    ('Post 3', 'Conteúdo do post 3', 3);
+
+INSERT INTO posts (user_id, description, add_person, localization) VALUES
+(1, 'flores', '@rosas', 'Valinhos-SP'),
+(2,'favorite movie', '@barbie', 'Valinhos-SP'),
+(3, 'books', '@amoremjogo', 'Library');
+
+
