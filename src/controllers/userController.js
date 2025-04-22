@@ -25,8 +25,8 @@ const getUser = async (req, res) => {
 const createUser = async (req, res) => {
     try {
         const { name, email, age } = req.body;
-        const image = req.file ? req.file.filename : null;
-        const newUser = await userModel.createUser(name, email, age, image);
+        const photo = req.file ? req.file.filename : null;
+        const newUser = await userModel.createUser(name, email, age, photo);
         res.status(201).json(newUser);
     } catch (error) {
         if (error.code === "23505") {

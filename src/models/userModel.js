@@ -17,18 +17,21 @@ const getUserById = async (id) => {
     return result.rows[0];
 };
 
-const createUser = async (name, email, age, image) => {
+const updateUser = async (id, name, email, password) => {
     const result = await pool.query(
-        "INSERT INTO users (name, email, age, image) VALUES ($1, $2, $3, $4) RETURNING *",
-        [name, email, age, image]
-    );
+        "UPDATE usuarios SET name = $1, email = $2, password = $3 WHERE id = $4",
+        [name, email, password , id]
+    )
+    if (result.rowCount === 0) {
+        return { error: "Usuário não encontrado" };
+    }
     return result.rows[0];
 };
 
-const updateUser = async (id, name, email, age) => {
+const createUser = async (name, email, password, photo) => {
     const result = await pool.query(
-        "UPDATE users SET name = $1, email = $2, age = $3 WHERE id = $4 RETURNING *",
-        [name, email, age, id]
+        "INSERT INTO usuarios (name, email, password, photo) VALUES ($1, $2, $3) RETURNING *",
+        [name, email, password, photo]
     );
     return result.rows[0];
 };
