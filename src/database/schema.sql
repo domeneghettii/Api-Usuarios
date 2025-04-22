@@ -21,7 +21,7 @@ CREATE TABLE posts (
     localization VARCHAR(255)
 );
 
-INSERT INTO user (name, email, password) VALUES 
+INSERT INTO users (name, email, age) VALUES 
     ('Anna Beatriz Valetim', 'AnnaV@gmail.com', 17),
     ('Beatriz Lima', 'Bealima@gmail.com', 17),
     ('Luana', 'lulud@gmail.com', 17);
